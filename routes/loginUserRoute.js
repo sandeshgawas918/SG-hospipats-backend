@@ -7,16 +7,15 @@ router.post('/login', async (req, res) => {
     try {
         const enteredEmail = req.body.email
         const enteredPassword = req.body.password
-        console.log(enteredPassword,enteredEmail);
-        
+        console.log(enteredPassword, enteredEmail);
+
         const matchedUser = await User.findOne({ email: enteredEmail })
         console.log(matchedUser)
         const comparePass = await bcrypt.compare(enteredPassword, matchedUser.password)
 
         if (matchedUser != null && comparePass) {
-            res.cookie('userId',matchedUser._id)
+            res.cookie('userId', matchedUser._id, { httpOnly: true, secure: true, sameSite: 'None' });
             res.send({ success: true });
-            console.log('cookie',comparePass)
         }
         else {
             console.log('else block -> matchedUser != null && comparePass');

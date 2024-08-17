@@ -1,11 +1,12 @@
-const mongoose=require('mongoose')
+require('dotenv').config()
+const mongoose = require('mongoose')
 
-const connectDB=async()=>{
+const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/doctor-appointment-booking')
+        await mongoose.connect(`${process.env.MONGO_DB}/doctor-appointment-booking`)
     } catch (error) {
-        console.log('error while making DB connection on db.js page', error);
+        console.log('Error while making DB connection on db.js page', error);
     }
 }
 
-module.exports=connectDB
+module.exports = connectDB

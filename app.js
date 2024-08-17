@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -7,7 +8,7 @@ const cookieParser=require('cookie-parser')
 
 app.use(cors(
     {
-        origin: 'http://localhost:3000', // Your frontend URL
+        origin: '*', // Your frontend URL
         credentials: true // Allow credentials (cookies) to be sent
     }
 ))
@@ -60,10 +61,6 @@ app.use('/api',deleteDoctorRouter)
 
 app.get('/', (req, res) => {
     res.send('doctor-appointment-booking-application')
-})
-app.get('/test', (req, res) => {
-    res.cookie('user','sandesh')
-    res.send('cookie setting')
 })
 
 module.exports = app

@@ -1,10 +1,11 @@
+require('dotenv').config()
 const app=require('./app.js')
 const connectDB=require('./db/db.js')
 
 connectDB()
 .then(()=>{
-    app.listen(7000,()=>{
-        console.log(`your server is running on http://localhost:7000`);
+    app.listen(`${process.env.NODE_PORT}`,()=>{
+        console.log(`your server is running on http://localhost:${process.env.NODE_PORT}`);
     })
 })
 .catch((err)=>{

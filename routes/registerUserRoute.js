@@ -17,6 +17,8 @@ router.post('/register', async (req, res) => {
         })
         res.send(myUser)
 
+        console.log(myUser, req.body.password)
+
     } catch (error) {
         console.error("Error during user registration:", error);
         res.status(500).send({ error: "Internal Server Error" });

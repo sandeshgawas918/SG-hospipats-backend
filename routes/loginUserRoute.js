@@ -18,8 +18,8 @@ router.post("/login", async (req, res) => {
 
     if (matchedUser != null && comparePass) {
       res.cookie("userId", matchedUser._id, {
-        // httpOnly: true,
-        // secure: true,
+        httpOnly: true,
+        secure: true,
         sameSite: "None",
       });
       res.send({ success: true });

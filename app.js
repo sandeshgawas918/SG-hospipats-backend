@@ -8,7 +8,7 @@ const cookieParser=require('cookie-parser')
 
 app.use(cors(
     {
-        origin: '*', // Your frontend URL
+        origin: 'http://localhost:3000', // Your frontend URL
         credentials: true // Allow credentials (cookies) to be sent
     }
 ))

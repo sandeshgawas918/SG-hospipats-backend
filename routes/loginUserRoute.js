@@ -21,8 +21,8 @@ router.post("/login", async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: 'https://sg-hospipats-backend.onrender.com', // Set to your production domain
-        path: '/', // Set the path as needed
+        domain: 'sg-hospipats-backend.onrender.com', // Correct format
+        path: '/',
       });
       res.send({ success: true, userEmail: matchedUser.email });
     } else {

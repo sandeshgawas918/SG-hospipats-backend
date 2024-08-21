@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(`${process.env.MONGO_DB}/doctor-appointment-booking`)
+        await mongoose.connect(`${process.env.MONGO_DB_LOCAL}/doctor-appointment-booking`)
     } catch (error) {
         console.log('Error while making DB connection on db.js page', error);
     }

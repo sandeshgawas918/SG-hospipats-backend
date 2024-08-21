@@ -1,6 +1,7 @@
 const authorizationMiddleware = (req, res, next) => {
     const cookie = req.cookies.userId
     if (cookie) {
+        console.log(cookie)
         next()
     }
     else {

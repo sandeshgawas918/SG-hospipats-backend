@@ -7,10 +7,8 @@ router.post("/login", async (req, res) => {
   try {
     const enteredEmail = req.body.email;
     const enteredPassword = req.body.password;
-    console.log(enteredPassword, enteredEmail);
 
     const matchedUser = await User.findOne({ email: enteredEmail });
-    console.log(matchedUser);
     const comparePass = await bcrypt.compare(
       enteredPassword,
       matchedUser.password
@@ -18,9 +16,10 @@ router.post("/login", async (req, res) => {
 
     if (matchedUser != null && comparePass) {
       res.cookie("userId", matchedUser._id, {
-        // httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: "None",
+        domain:"sg-hospitals-mern.vercel.app",
         path: '/',
     });
       res.send({ success: true, userId: matchedUser._id });

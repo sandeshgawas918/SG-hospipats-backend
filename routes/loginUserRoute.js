@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
         sameSite: "None",
         path: '/',
     });
-      res.send({ success: true, userEmail: matchedUser.email });
+      res.send({ success: true, userId: matchedUser._id });
     } else {
       console.log("else block -> matchedUser != null && comparePass");
       res.status(400).json({ success: false });

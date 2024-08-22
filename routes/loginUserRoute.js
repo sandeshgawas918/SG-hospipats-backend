@@ -21,7 +21,7 @@ router.post("/login", async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: 'sg-hospipats-backend.onrender.com', // Correct format
+        domain: 'sg-hospitals-mern.vercel.app', // Correct format
         path: '/',
       });
       res.send({ success: true, userEmail: matchedUser.email });

@@ -21,9 +21,8 @@ router.post("/login", async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: 'sg-hospitals-mern.vercel.app', // Correct format
         path: '/',
-      });
+    });
       res.send({ success: true, userEmail: matchedUser.email });
     } else {
       console.log("else block -> matchedUser != null && comparePass");

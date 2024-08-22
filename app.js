@@ -8,8 +8,8 @@ const cookieParser=require('cookie-parser')
 
 app.use(cors(
     {
-        // origin: 'https://sg-hospitals-mern.vercel.app', 
-        origin: 'http://localhost:3000', // Your frontend URL
+        origin: 'https://sg-hospitals-mern.vercel.app', 
+        // origin: 'http://localhost:3000', 
         credentials: true // Allow credentials (cookies) to be sent
     }
 ))

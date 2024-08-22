@@ -19,7 +19,6 @@ router.post("/login", async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain:"sg-hospitals-mern.vercel.app",
         path: '/',
     });
       res.send({ success: true, userId: matchedUser._id });

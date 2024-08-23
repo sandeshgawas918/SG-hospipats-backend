@@ -4,12 +4,12 @@ const app = express()
 const path = require('path')
 const cors = require('cors')
 const session = require('express-session')
-const cookieParser=require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 app.use(cors(
     {
         origin: 'https://sg-hospitals-mern.vercel.app', 
-        // origin: 'http://localhost:3000', 
+        // origin: 'http://localhost:3000',
         credentials: true // Allow credentials (cookies) to be sent
     }
 ))
@@ -18,7 +18,7 @@ app.use(session({
     secret: 'cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { 
+    cookie: {
         secure: true, // Since both frontend and backend are HTTPS
         sameSite: "None" // Allow cross-site requests
     }
@@ -36,13 +36,13 @@ const fetchSingleDoctorRouter = require('./routes/fetchSingleDoctorRoute.js')
 const createBookingRouter = require('./routes/createBookingRoute.js')
 const registerRouter = require('./routes/registerUserRoute.js')
 const loginRouter = require('./routes/loginUserRoute.js')
-const getBookingRouter=require('./routes/getUserAppointmentsRouter.js')
-const getCountRouter=require('./routes/getCountRoute.js')
-const getAllBookingsRouter=require('./routes/getBookingsRoute.js')
-const deleteBookingRouter=require('./routes/deleteAppointment.js')
-const deleteCategoryRouter=require('./routes/deleteCategory.js')
-const deleteDoctorRouter=require('./routes/deleteDoctor.js')
-const logoutRouter=require('./routes/logoutRouter.js')
+const getBookingRouter = require('./routes/getUserAppointmentsRouter.js')
+const getCountRouter = require('./routes/getCountRoute.js')
+const getAllBookingsRouter = require('./routes/getBookingsRoute.js')
+const deleteBookingRouter = require('./routes/deleteAppointment.js')
+const deleteCategoryRouter = require('./routes/deleteCategory.js')
+const deleteDoctorRouter = require('./routes/deleteDoctor.js')
+const logoutRouter = require('./routes/logoutRouter.js')
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -55,31 +55,16 @@ app.use('/api', fetchSingleDoctorRouter)
 app.use('/api', createBookingRouter)
 app.use('/api', registerRouter)
 app.use('/api', loginRouter)
-app.use('/api',getBookingRouter)
-app.use('/api',getCountRouter)
-app.use('/api',getAllBookingsRouter)
-app.use('/api',deleteBookingRouter)
-app.use('/api',deleteCategoryRouter)
-app.use('/api',deleteDoctorRouter)
-app.use('/api',logoutRouter)
+app.use('/api', getBookingRouter)
+app.use('/api', getCountRouter)
+app.use('/api', getAllBookingsRouter)
+app.use('/api', deleteBookingRouter)
+app.use('/api', deleteCategoryRouter)
+app.use('/api', deleteDoctorRouter)
+app.use('/api', logoutRouter)
 
 app.get('/', (req, res) => {
     res.send('doctor-appointment-booking-application')
-})
-
-app.get('/setcookie',(req,res)=>{
-    res.cookie('name','sandesh',{
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        path: '/',
-    })
-    res.send('cookie set')
-})
-
-app.get('/deletecookie',(req,res)=>{
-    res.clearCookie('name')
-    res.send('cookie deleted')
 })
 
 module.exports = app

@@ -42,6 +42,7 @@ const getAllBookingsRouter=require('./routes/getBookingsRoute.js')
 const deleteBookingRouter=require('./routes/deleteAppointment.js')
 const deleteCategoryRouter=require('./routes/deleteCategory.js')
 const deleteDoctorRouter=require('./routes/deleteDoctor.js')
+const logoutRouter=require('./routes/logoutRouter.js')
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -60,9 +61,25 @@ app.use('/api',getAllBookingsRouter)
 app.use('/api',deleteBookingRouter)
 app.use('/api',deleteCategoryRouter)
 app.use('/api',deleteDoctorRouter)
+app.use('/api',logoutRouter)
 
 app.get('/', (req, res) => {
     res.send('doctor-appointment-booking-application')
+})
+
+app.get('/setcookie',(req,res)=>{
+    res.cookie('name','sandesh',{
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        path: '/',
+    })
+    res.send('cookie set')
+})
+
+app.get('/deletecookie',(req,res)=>{
+    res.clearCookie('name')
+    res.send('cookie deleted')
 })
 
 module.exports = app
